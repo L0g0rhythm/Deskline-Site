@@ -1,11 +1,8 @@
 /* css/style.css */
-
 @import url("base/_reset.css");
 @import url("base/_variables.css");
 @import url("base/_base.css");
-
 @import url("layout/_layout.css");
-
 @import url("components/_buttons.css");
 @import url("components/_forms.css");
 @import url("components/_header.css");
@@ -13,7 +10,6 @@
 @import url("components/_social-icons.css");
 @import url("components/_portfolio-grid.css");
 @import url("components/_footer.css");
-
 @import url("sections/_hero.css");
 @import url("sections/_about.css");
 @import url("sections/_services.css");
