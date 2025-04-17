@@ -97,4 +97,5 @@ h4 {
   position: absolute;
   left: -5000px;
   visibility: hidden;
+  display: none;
 }
