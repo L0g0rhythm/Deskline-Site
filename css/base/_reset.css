@@ -1,0 +1,88 @@
+/* css/base/_reset.css */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Apply border-box universally */
+  margin: 0; /* Reset default margins */
+  padding: 0; /* Reset default padding */
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iOS */
+  /* scroll-behavior: smooth; -> Moved to _base.css */
+  /* font-size: 100%; -> Moved to _base.css */
+}
+
+body {
+  /* min-height: 100vh; -> Moved to _base.css (Layout concern) */
+  /* line-height: 1.5; -> Default line-height set in _base.css */
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; /* Remove bottom space */
+  max-width: 100%; /* Responsive by default */
+}
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Improve heading wrapping */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  /* line-height: 1.3; -> Moved to _base.css */
+}
+
+/* Reset button styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Minimal focus outline fallback (enhanced in _base.css) */
+:focus {
+  outline: thin dotted;
+  outline-offset: 2px;
+}
+
+/* Visually hidden class for accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

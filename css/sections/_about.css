@@ -1,0 +1,121 @@
+/* css/sections/_about.css */
+
+.about-section {
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  padding-top: clamp(40px, 8vw, 80px);
+  padding-bottom: clamp(40px, 8vw, 80px);
+  border-top: 1px solid var(--border-color);
+  overflow-x: hidden;
+}
+
+.about-outer-container {
+  padding: 0;
+}
+
+.about-inner-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(30px, 5vw, 60px);
+  align-items: center;
+}
+
+.about-text {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  padding: clamp(30px, 5vw, 45px);
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.about-image {
+  min-height: 200px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.about-section.is-visible .about-text {
+  animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 0.1s;
+  animation-play-state: running;
+  transition: none; /* Adicionado para evitar conflito */
+}
+
+.about-section.is-visible .about-image {
+  animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 0.2s;
+  animation-play-state: running;
+  transition: none; /* Adicionado para evitar conflito */
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.about-text h2 {
+  color: var(--dark-green);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+.about-text p {
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: var(--text-color-medium);
+}
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-image img {
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 991.98px) {
+  .about-inner-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .about-text {
+    order: 2;
+  }
+  .about-image {
+    order: 1;
+    max-width: 80%;
+    margin: 0 auto;
+    min-height: 250px;
+  }
+  .about-text h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

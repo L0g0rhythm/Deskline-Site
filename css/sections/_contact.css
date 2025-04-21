@@ -1,0 +1,127 @@
+/* css/sections/_contact.css */
+
+/* Estilos para a seção principal que conterá o formulário na página contato.html */
+/* Estes são os estilos originais que aplicam o fundo parallax etc. */
+.contact-section {
+  /* Esta classe será usada na tag <section> em contato.html */
+  background-color: var(--background-light); /* Fallback */
+  background-image: linear-gradient(
+      rgba(var(--dark-green-rgb), 0.85),
+      rgba(var(--dark-green-rgb), 0.85)
+    ),
+    url("../../img/background-forms.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Efeito Parallax */
+  padding-top: clamp(
+    60px,
+    10vw,
+    100px
+  ); /* Aumentar padding se for a única seção */
+  padding-bottom: clamp(60px, 10vw, 100px);
+  min-height: calc(
+    100vh - var(--header-height)
+  ); /* Opcional: tentar ocupar altura */
+  display: flex; /* Para centralizar o container se necessário */
+  align-items: center; /* Para centralizar o container se necessário */
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-container {
+  /* Container dentro da seção */
+  display: grid;
+  /* Layout original com imagem */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(30px, 5vw, 60px);
+  align-items: flex-start; /* Alinha topo do form e imagem */
+  position: relative;
+  z-index: 1;
+  /* Adiciona max-width e centraliza o container se a seção for flex */
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px; /* Garante padding do container */
+  padding-right: 15px;
+}
+
+/* Wrapper do formulário (mantém o estilo original) */
+.contact-form-wrapper {
+  background-color: var(--background-light);
+  padding: clamp(25px, 4vw, 40px);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  color: var(--dark-green);
+}
+.contact-form-wrapper h2.section-title {
+  /* Seletor pode ser h2 direto se não houver conflito */
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--dark-green);
+  text-shadow: none;
+}
+
+/* --- Form Element Overrides/Specifics --- */
+/* (Mantendo overrides de label, placeholder, error message min-height, btn-submit layout) */
+.contact-section .form-group label {
+  color: var(--dark-green);
+}
+.contact-section .form-group input::placeholder,
+.contact-section .form-group textarea::placeholder {
+  color: var(--text-color-medium);
+  opacity: 0.8;
+}
+.contact-section .error-message {
+  min-height: 1em;
+}
+.contact-section .btn-submit {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+/* --- Estilos da Imagem (Layout Original) --- */
+.contact-image {
+  min-height: 300px;
+  /* A imagem pode ser um background ou uma tag img */
+}
+.contact-image img {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* --- Ajustes Responsivos (Layout Original) --- */
+@media (max-width: 991.98px) {
+  .contact-container {
+    grid-template-columns: 1fr; /* Empilha */
+  }
+  .contact-image {
+    order: 1;
+    max-width: 70%;
+    margin: 0 auto 2rem auto;
+    display: none; /* Originalmente oculto em telas menores */
+  }
+  .contact-form-wrapper {
+    order: 2;
+  }
+  /* Ajustar padding da seção em telas menores se necessário */
+  .contact-section {
+    padding-top: clamp(40px, 8vw, 80px);
+    padding-bottom: clamp(40px, 8vw, 80px);
+  }
+}
+@media (max-width: 767.98px) {
+  .contact-form-wrapper {
+    padding: 25px 20px;
+  }
+  .contact-image {
+    max-width: 85%;
+    min-height: 150px;
+  }
+}

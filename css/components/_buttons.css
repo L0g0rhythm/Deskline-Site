@@ -1,0 +1,73 @@
+/* css/components/_buttons.css */
+
+.btn {
+  display: inline-block;
+  padding: 0.8em 1.8em;
+  border: 2px solid transparent; /* Add transparent border to prevent size change on hover for outline */
+  border-radius: var(--border-radius);
+  background-image: var(--primary-gradient);
+  color: var(--text-color-light);
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform var(--transition-speed) var(--animation-timing),
+    box-shadow var(--transition-speed) var(--animation-timing),
+    background-position var(--transition-speed) var(--animation-timing),
+    background-color var(--transition-speed) var(--animation-timing),
+    /* Added bg-color */ color var(--transition-speed) var(--animation-timing),
+    /* Added color */ border-color var(--transition-speed)
+      var(--animation-timing); /* Added border-color */
+  box-shadow: var(--shadow-md);
+  background-size: 200% auto;
+  background-position: 0% 0%;
+  /* filter property removed for broader compatibility */
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  background-position: 100% 0%;
+  /* filter brightness removed */
+}
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  /* filter brightness removed */
+}
+
+.btn-submit {
+  padding: 0.85em 2.2em;
+  font-size: 1.05rem;
+  margin-top: 10px;
+}
+
+/* --- Regras .btn-cta modificadas para estilo Outline --- */
+.btn-cta {
+  background-image: none;
+  background-color: transparent; /* Fundo transparente */
+  border: 2px solid var(--primary-color); /* Borda verde */
+  color: var(--primary-color); /* Texto verde */
+  font-weight: 700;
+  /* box-shadow: none; */ /* Opcional: remover sombra inicial se preferir mais leve */
+  /* filter removed */
+}
+
+.btn-cta:hover {
+  background-color: var(--primary-color); /* Fundo verde no hover */
+  border-color: var(--primary-color); /* Mantém borda verde */
+  color: var(--text-color-light); /* Texto branco no hover */
+  transform: translateY(-4px); /* Efeito de elevação */
+  box-shadow: var(--shadow-lg); /* Sombra aumentada */
+  /* background-position removed */
+  /* filter removed */
+}
+
+.btn-cta:active {
+  /* Estado ativo para o botão outline */
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--accent-color); /* Verde um pouco mais escuro */
+  border-color: var(--accent-color);
+  color: var(--text-color-light);
+}

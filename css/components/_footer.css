@@ -1,0 +1,153 @@
+/* css/components/_footer.css */
+
+.main-footer {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: clamp(30px, 5vw, 50px) 0 0 0;
+  margin-top: auto; /* Contributes to sticky footer */
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  /* Removed border-bottom as it's handled in the media query now if needed */
+}
+
+.footer-block {
+  flex: 1;
+  min-width: 250px; /* Adjust as needed for wrapping */
+}
+
+/* Footer About Block */
+.footer-about .footer-logo {
+  margin-bottom: 1rem;
+  display: inline-block; /* Allows margin-bottom */
+}
+.footer-about .footer-logo img {
+  height: 35px;
+  width: auto;
+  display: block;
+}
+
+.footer-address {
+  margin-bottom: 1rem;
+}
+.footer-address address {
+  font-style: normal;
+  line-height: 1.6;
+  margin-top: 0.25rem;
+  opacity: 0.9;
+}
+.footer-address p {
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+.footer-address p:last-child {
+  margin-bottom: 0;
+}
+.footer-address strong {
+  color: rgba(255, 255, 255, 0.95); /* Slightly less bright white */
+}
+
+.footer-address a {
+  color: var(--text-color-light);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition-speed) ease;
+}
+.footer-address a:hover,
+.footer-address a:focus-visible {
+  color: #e9ecef; /* Slightly off-white for hover */
+  text-decoration-thickness: 2px;
+}
+
+/* Footer Links Block */
+.footer-links h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-color-light);
+}
+
+/* --- .footer-nav rules removed, handled by _navigation.css --- */
+
+/* Footer Bottom Area */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: clamp(20px, 4vw, 30px);
+  /* border-top will be added in media query for mobile */
+}
+
+.footer-copyright {
+  text-align: left; /* Default alignment */
+  /* Removed redundant margin/padding/border resets */
+}
+.footer-copyright p {
+  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  line-height: 1.5;
+}
+.footer-copyright p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- .footer-social-icons base rules removed, handled by _social-icons.css --- */
+/* Specific layout adjustments for footer social icons remain in media query below */
+
+/* Responsive Styles */
+@media (max-width: 767.98px) {
+  .footer-top {
+    flex-direction: column;
+    /* border-bottom: none; */ /* Removed border-bottom settings */
+    padding-bottom: 0;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem; /* Adjusted gap for column layout */
+  }
+  .footer-block {
+    min-width: 100%; /* Take full width */
+    text-align: center;
+  }
+  .footer-about .footer-logo {
+    display: inline-block; /* Keep logo centered */
+  }
+  .footer-address {
+    text-align: center;
+  }
+  .footer-links h4 {
+    text-align: center;
+  }
+
+  /* Footer nav rules are now correctly handled by _navigation.css media query */
+
+  .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Add border only on mobile */
+    gap: 0.8rem; /* Adjusted gap */
+  }
+  .footer-copyright {
+    text-align: center;
+    order: 2; /* Copyright below social icons */
+    margin-top: 0.5rem; /* Reduced margin */
+    /* border-top: none; */ /* Already has no border-top */
+  }
+  .footer-social-icons {
+    /* Selects the existing class defined in _social-icons.css */
+    justify-content: center; /* Center icons */
+    order: 1; /* Social icons above copyright */
+    /* Other styles like size, color come from _social-icons.css */
+    margin-bottom: 0.5rem; /* Add some margin */
+  }
+}

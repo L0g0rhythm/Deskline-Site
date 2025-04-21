@@ -1,0 +1,158 @@
+/* css/sections/_features.css */
+
+.features-section {
+  background-color: var(--dark-green);
+  background-image: linear-gradient(
+      rgba(var(--dark-green-rgb), 0.85),
+      rgba(var(--dark-green-rgb), 0.9)
+    ),
+    url("../../img/features-background.webp"); /* <<< SUBSTITUA PELO CAMINHO REAL DA SUA IMAGEM */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-color-light);
+  padding-top: clamp(60px, 10vw, 100px);
+  padding-bottom: clamp(60px, 10vw, 100px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 3rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.features-title {
+  text-align: center;
+}
+.features-title h2.section-title {
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-color-light);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem 2.5rem;
+}
+
+.feature-item {
+  padding-left: 2.5rem;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s var(--animation-timing),
+    transform 0.7s var(--animation-timing);
+  transition-delay: var(--animation-delay, 0s);
+}
+
+.feature-item:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.features-section.is-visible .feature-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.feature-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 24px;
+  height: 24px;
+  background-color: var(--text-color-light); /* Icon color changed to light */
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  opacity: 0.9; /* Adjusted opacity slightly */
+  /* mask-image needs to be defined elsewhere based on specific icon class */
+}
+
+.feature-item h3 {
+  font-size: 1.4em;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+  color: var(--text-color-light); /* Text color changed to light */
+}
+
+.feature-item p {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Text color changed to light (slightly dimmer) */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.features-section.is-visible .feature-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.features-section.is-visible .feature-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.features-section.is-visible .feature-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.features-section.is-visible .feature-item:nth-child(4) {
+  transition-delay: 0.15s;
+}
+.features-section.is-visible .feature-item:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+@media (min-width: 992px) {
+  .features-container {
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .features-title {
+    text-align: left;
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-section.is-visible .feature-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .features-section.is-visible .feature-item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .features-section.is-visible .feature-item:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+  .features-section.is-visible .feature-item:nth-child(4) {
+    transition-delay: 0.25s;
+  }
+  .features-section.is-visible .feature-item:nth-child(5) {
+    transition-delay: 0.2s;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .features-section {
+    background-attachment: scroll; /* Disable parallax on mobile */
+    padding-top: clamp(40px, 8vw, 80px); /* Adjust padding back */
+    padding-bottom: clamp(40px, 8vw, 80px);
+  }
+}

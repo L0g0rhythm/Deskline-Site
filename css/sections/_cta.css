@@ -1,0 +1,100 @@
+/* css/sections/_cta.css */
+
+.cta-section {
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  padding-top: clamp(60px, 10vw, 100px);
+  padding-bottom: clamp(60px, 10vw, 100px);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border-color);
+}
+
+.cta-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(30px, 5vw, 60px);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.cta-image {
+  min-height: 200px;
+  order: 2;
+}
+.cta-image img {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  display: block;
+}
+
+.cta-content {
+  background-color: var(--background-light); /* Fundo branco para o card */
+  border: 1px solid var(--border-color); /* Borda padrão fina */
+  border-top: 4px solid var(--primary-color); /* Borda superior verde destacada */
+  border-radius: var(--border-radius); /* Cantos arredondados */
+  box-shadow: var(--shadow-md); /* Sombra padrão */
+  padding: clamp(30px, 5vw, 45px);
+  text-align: center;
+  order: 1;
+  /* backdrop-filter e -webkit-backdrop-filter removidos */
+  /* color: var(--text-color-light) removido (texto será escuro) */
+  transition: border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease; /* Transição para hover */
+}
+
+.cta-content:hover {
+  /* Não muda background-color */
+  border-color: var(--accent-color); /* Muda cor das bordas finas */
+  border-top-color: var(--primary-color); /* Mantém cor da borda superior */
+  box-shadow: var(--shadow-lg); /* Aumenta sombra */
+}
+
+.cta-content .section-title-small {
+  font-size: clamp(1.5em, 3vw, 1.9em);
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--dark-green); /* Cor escura */
+  /* text-shadow removido */
+}
+
+.cta-content p {
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  line-height: 1.7;
+  color: var(--text-color-medium); /* Cor escura */
+}
+
+@media (max-width: 991.98px) {
+  .cta-image {
+    max-width: 70%;
+    margin: 0 auto;
+    display: none;
+  }
+  .cta-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cta-image {
+    max-width: 85%;
+    min-height: 150px;
+  }
+  .cta-content {
+    padding: 30px 25px; /* Padding ajustado */
+  }
+  .cta-section {
+    padding-top: clamp(40px, 8vw, 80px);
+    padding-bottom: clamp(40px, 8vw, 80px);
+  }
+}

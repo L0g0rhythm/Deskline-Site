@@ -1,0 +1,126 @@
+/* css/components/_portfolio-grid.css */
+
+/* Container da Grade (Agora um Grid responsivo padrão) */
+.portfolio-grid {
+  display: grid; /* Usa Grid Layout */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Colunas responsivas */
+  gap: clamp(25px, 4vw, 40px); /* Espaçamento entre os cards */
+}
+
+/* Estilo do Item do Portfólio (Card) */
+.portfolio-item {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Mantém cantos arredondados com imagem */
+  box-shadow: var(--shadow-md);
+  position: relative;
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease; /* Transições de hover */
+}
+
+/* Animação de entrada (aplicada pelo JS via classe) */
+/* Mantém animação individual original */
+.portfolio-item.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition-delay: var(
+    --animation-delay,
+    0s
+  ); /* Delay definido no CSS ou JS */
+}
+/* Ativação da animação quando a seção ou item fica visível */
+/* Adapte o seletor se o JS adicionar .is-visible diretamente ao item */
+.portfolio-section.is-visible .portfolio-item.fade-in-section,
+.portfolio-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Link dentro do item */
+.portfolio-item a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  position: relative; /* Para o overlay ::after */
+}
+
+/* Efeitos de Hover/Focus no Card */
+.portfolio-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+/* Aplica o mesmo efeito quando um elemento DENTRO do card recebe foco */
+.portfolio-item:focus-within {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+/* Estilo de foco específico para o LINK dentro do card */
+.portfolio-item a:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+  border-radius: var(
+    --border-radius
+  ); /* Aplica ao link para melhor visualização */
+}
+
+/* Imagem dentro do Card */
+.portfolio-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Mantém proporção consistente */
+  object-fit: cover; /* Garante que a imagem cubra a área */
+  transition: transform 0.5s ease-out;
+  display: block; /* Remove espaço extra abaixo da imagem */
+}
+.portfolio-item:hover img {
+  transform: scale(1.15); /* Efeito de zoom na imagem */
+}
+
+/* Legenda/Título abaixo da imagem */
+.portfolio-item span {
+  display: block;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.03); /* Fundo sutil para o span */
+  color: var(--dark-green);
+  opacity: 0.9;
+  position: relative;
+  z-index: 2; /* Acima do overlay */
+  border-top: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+.portfolio-item:hover span {
+  background-color: var(--dark-green);
+  color: var(--text-color-light);
+  opacity: 1;
+}
+
+/* Overlay escuro sobre a imagem no hover/focus do link */
+.portfolio-item a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Ajusta altura para cobrir apenas a imagem (estimativa da altura do span ~51px) */
+  /* Se a altura do span for variável, cobrir 100% e usar z-index maior no span pode ser mais robusto */
+  height: calc(100% - 51px); /* Ajuste este valor se a altura do span mudar */
+  background-color: rgba(var(--dark-green-rgb), 0.75);
+  opacity: 0;
+  z-index: 1; /* Abaixo do span */
+  pointer-events: none;
+  transform: scale(1.1); /* Efeito sutil de entrada */
+  transition: opacity var(--transition-speed) ease-out,
+    transform var(--transition-speed) ease-out;
+}
+.portfolio-item a:hover::after,
+.portfolio-item a:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
+}
